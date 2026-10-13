@@ -1,0 +1,18 @@
+{% extends "blog/base.html" %}
+
+{% block titulo %}Início | Meu blog{% endblock %}
+
+{% block conteudo %}
+<section class="apresentacao">
+    <p class="categoria">ESTUDOS E PROJETOS</p>
+    <h1>Bem-vindo ao meu blog</h1>
+    <p>Um espaço para registrar meus estudos de programação e os projetos que estou desenvolvendo.</p>
+    <a class="botao" href="#sobre">Conheça o blog</a>
+</section>
+
+<section id="sobre" class="sobre">
+    <h2>Sobre o blog</h2>
+    <p>Meu nome é {{ nome }}. Estou estudando desenvolvimento Full Stack Python e construindo este blog com Django.</p>
+    <p>Nesta etapa, organizei a página inicial e a estrutura que será compartilhada entre as páginas do projeto.</p>
+</section>
+{% endblock %}

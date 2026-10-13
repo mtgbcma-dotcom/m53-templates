@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}Meu blog{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'blog/css/style.css' %}">
+</head>
+<body>
+    <header class="cabecalho">
+        <div class="container">
+            <a class="marca" href="{% url 'blog:index' %}">Meu blog</a>
+            <nav aria-label="Navegação principal">
+                <a href="{% url 'blog:index' %}">Início</a>
+                <a href="{% url 'blog:index' %}#sobre">Sobre</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        {% block conteudo %}{% endblock %}
+    </main>
+
+    <footer class="rodape">
+        <div class="container">Bruno Macedo &middot; {% now "Y" %}</div>
+    </footer>
+</body>
+</html>
