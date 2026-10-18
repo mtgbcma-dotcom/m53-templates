@@ -1,0 +1,32 @@
+{% extends "blog/base.html" %}
+
+{% block titulo %}Início | Meu blog{% endblock %}
+
+{% block conteudo %}
+<section class="apresentacao">
+    <p class="categoria">ESTUDOS E PROJETOS</p>
+    <h1>Bem-vindo ao meu blog</h1>
+    <p>Um espaço para registrar meus estudos de programação e os projetos que estou desenvolvendo.</p>
+    <a class="botao" href="#sobre">Conheça o blog</a>
+</section>
+
+<section id="postagens" class="postagens" aria-labelledby="titulo-postagens">
+    <h2 id="titulo-postagens">Últimas postagens</h2>
+    {% for postagem in postagens %}
+    <article class="postagem">
+        <h3><a href="{{ postagem.get_absolute_url }}">{{ postagem.titulo }}</a></h3>
+        <p class="metadados">Por {{ postagem.autor.get_full_name|default:postagem.autor.username }} · <time datetime="{{ postagem.criado_em|date:'c' }}">{{ postagem.criado_em|date:"d/m/Y" }}</time></p>
+        <p>{{ postagem.conteudo|truncatewords:45 }}</p>
+        <a class="botao" href="{{ postagem.get_absolute_url }}">Ler postagem</a>
+    </article>
+    {% empty %}
+    <p>Ainda não há postagens publicadas.</p>
+    {% endfor %}
+</section>
+
+<section id="sobre" class="sobre">
+    <h2>Sobre o blog</h2>
+    <p>Meu nome é {{ nome }}. Estou estudando desenvolvimento Full Stack Python e construindo este blog com Django.</p>
+    <p>As postagens são cadastradas no painel administrativo e exibidas aqui, usando a estrutura compartilhada dos templates.</p>
+</section>
+{% endblock %}
